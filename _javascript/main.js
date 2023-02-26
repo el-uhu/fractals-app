@@ -198,7 +198,6 @@ function setup() {
   submitButton.mouseClicked(reload);
 
   let fileInput = select("#fileInput");
-  fileInput.changed(setImage);
 }
 
 
