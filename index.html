@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fractal Playground</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="/node_modules/alpinejs/dist/cdn.min.js"></script>
+    <script src="/node_modules/feather-icons/dist/feather.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+  </head>
+  <body id="body" class="is-family-code"  x-data="{'axiom': 'F', 'ruleF': 'FF+[+F-F-F]-[-F+F+F]', ruleX:'X', rulePlus: '+', ruleMinus: '-', scale: 60, angle: 25, opacity: 50 }">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+      <div class="navbar-menu is-active" id="navMenu">
+          <div class="navbar-item">
+              <span class="icon">
+                <i data-feather="codesandbox"></i>
+              </span>
+            <p>Fractals Playground</p>
+          </div>
+      </div>
+    </nav>
+
+    <div id="modal-js-example" class="modal">
+      <div class="modal-background"></div>
+    
+      <div class="modal-content">
+        <div class="box">
+          <p class="title is-4">Settings</p>
+
+          <div class="columns is-mobile is-centered">
+            <div class="column is-4 is-vcentered p-1">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="foobar" id="selectLine" checked>
+                  Draw using a regular line
+                </label>
+                <label class="radio">
+                  <input type="radio" name="foobar" id="selectImage">
+                  Draw using a photo
+                </label>
+              </div>
+            </div>
+
+            <div class="file column is-3 is-vcentered p-1">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume" id="fileInput">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <span class="icon">
+                      <i data-feather="upload-cloud"></i>
+                    </span>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="columns is-mobile is-centered">
+            <div class="column is-5 is-vcentered p-1">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">Axiom: </label>
+                </div>
+                <div class="field-body is-small">
+                  <div class="field">
+                    <div class="control">
+                      <input id="axiomInput" class="input p-0 pl-2" type="text" x-model="axiom" placeholder="describe the starting shape here">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-5 is-vcentered p-1">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">Angle (°): </label>
+                </div>
+                <div class="field-body is-small">
+                  <div class="field">
+                    <div class="control">
+                      <input id="angleInput" class="input p-0 pl-2" type="number" x-model="angle" placeholder="What is the angle for turning left (-) or right (+)?">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column is-5 is-vcentered p-1">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">F → </label>
+                </div>
+                <div class="field-body">
+                  <div class="field mr-0">
+                    <div class="control">
+                      <input id="ruleFInput" class="input p-0 pl-2" type="text" x-model="ruleF" placeholder="What does F change to?">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-5 is-vcentered p-1">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">X → </label>
+                </div>
+                <div class="field-body">
+                  <div class="field mr-0">
+                    <div class="control">
+                      <input id="ruleXInput" class="input p-0 pl-2" type="text" x-model="ruleX" placeholder="What does X change to?">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column is-5 is-vcentered p-1">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">+ → </label>
+                </div>
+                <div class="field-body">
+                  <div class="field mr-0">
+                    <div class="control">
+                      <input id="rulePlusInput" class="input p-0 pl-2" type="text" x-model="rulePlus" placeholder="What does + change to?">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-5 is-vcentered p-1">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">- → </label>
+                </div>
+                <div class="field-body">
+                  <div class="field mr-0">
+                    <div class="control">
+                      <input id="ruleMinusInput" class="input p-0 pl-2" type="text" x-model="ruleMinus" placeholder="What does - change to?">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-mobile is-centered">
+            <button id="submitButton" class="button is-purple is-large m-3 closemodal">
+              <span class="icon">
+                <i data-feather="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="main">
+        <div class="m-5">
+          <div class="columns is-centered is-mobile">
+            <div id="sketch-holder">
+            </div>
+          </div>
+          
+          <div class="columns is-centered is-mobile">
+            <button id="shrinkBtn" class="button is-danger m-3">
+              <span class="icon">
+                <i data-feather="chevrons-down"></i>
+              </span>
+            </button>
+            <button id="growBtn" class="button is-danger m-3">
+              <span class="icon">
+                <i data-feather="chevrons-up"></i>
+              </span>
+            </button>
+
+
+            <button id="shrinkAngle" class="button is-warning m-3" @click="angle-=1">
+              <span class="icon">
+                <i data-feather="corner-up-left"></i>
+              </span>
+            </button>
+
+            <button id="growAngle" class="button is-warning m-3" @click="angle+=1">
+              <span class="icon">
+                <i data-feather="corner-up-right"></i>
+              </span>
+            </button>
+
+
+            <button id="zoomOut" class="button is-success m-3">
+              <span class="icon">
+                <i data-feather="minus"></i>
+              </span>
+            </button>
+
+            <button id="zoomIn" class="button is-success m-3">
+              <span class="icon">
+                <i data-feather="plus"></i>
+              </span>
+            </button>
+          </div>
+
+          <div class="columns is-centered">
+            <button id="infoBtn" class="button is-white m-3">
+              <span class="icon">
+                <i data-feather="info"></i>
+              </span>
+            </button>
+  
+            <button id="settingsBtn" class="button is-white m-3 js-modal-trigger" data-target="modal-js-example">
+              <span class="icon">
+                <i data-feather="sliders"></i>
+              </span>
+            </button>
+            <a id="downloadButton" class="button is-white m-3" download="image.png">
+              <span class="icon">
+                <i data-feather="download-cloud"></i>
+              </span>
+            </a>
+          </div>
+      </div>
+    </section>
+
+    <footer class="footer has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <p>Created by Lukas Hutter, 2023</p>
+            <p>
+              <small>
+                using <a href="http://bulma.io">Bulma</a>, <a href="https://https://p5js.org/">P5.js</a> and <a href="https://feathericons.com/">Feather Icons</a>
+              </small>
+            </p>
+            <p>
+              <small>
+                Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="lib/main.js"></script>
+
+    <script>
+      feather.replace()
+    </script>
+
+  </body>
+</html>
