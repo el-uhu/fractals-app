@@ -10,15 +10,29 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
   </head>
-  <body id="body" class="is-family-code"  x-data="{'axiom': 'F', 'ruleF': 'FF+[+F-F-F]-[-F+F+F]', ruleX:'X', rulePlus: '+', ruleMinus: '-', scale: 60, angle: 25, opacity: 50 }">
+  <body 
+    id="body" 
+    class="is-family-code"
+    x-data="{'axiom': 'F', 'ruleF': 'FF+[+F-F-F]-[-F+F+F]', ruleX:'X', rulePlus: '+', ruleMinus: '-', scale: 60, angle: 25, opacity: 50 }"
+    @keydown.c="angle-=Number(1)"
+    @keydown.v="angle+=Number(1)">
     <nav class="navbar" role="navigation" aria-label="main navigation">
 
       <div class="navbar-menu is-active" id="navMenu">
           <div class="navbar-item">
-              <span class="icon">
-                <i data-feather="codesandbox"></i>
-              </span>
+            <span class="icon">
+              <i data-feather="codesandbox"></i>
+            </span>
             <p>Fractals Playground</p>
+          </div>
+          <div class="navbar-item">
+            <small>
+              <b>Axiom: </b><span x-text="axiom"></span> |
+              <b>F → </b><span x-text="ruleF"></span> |
+              <b>X → </b><span x-text="ruleX"></span> |
+              <b>+ → </b><span x-text="rulePlus"></span> |
+              <b>- → </b><span x-text="ruleMinus"></span>
+            </small>
           </div>
       </div>
     </nav>
@@ -31,7 +45,7 @@
           <p class="title is-4">Settings</p>
 
           <div class="columns is-mobile is-centered">
-            <div class="column is-4 is-vcentered p-1">
+            <div class="column is-4 is-vcentered p-1 hidden">
               <div class="control">
                 <label class="radio">
                   <input type="radio" name="foobar" id="selectLine" checked>
@@ -44,7 +58,7 @@
               </div>
             </div>
 
-            <div class="file column is-3 is-vcentered p-1">
+            <div class="file column is-3 is-vcentered p-1 hidden">
               <label class="file-label">
                 <input class="file-input" type="file" name="resume" id="fileInput">
                 <span class="file-cta">
@@ -62,7 +76,8 @@
           </div>
 
           <div class="columns is-mobile is-centered">
-            <div class="column is-5 is-vcentered p-1">
+            <div class="column is-vcentered p-1 is-10">
+              
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
                   <label class="label ">Axiom: </label>
@@ -76,7 +91,7 @@
                 </div>
               </div>
             </div>
-            <div class="column is-5 is-vcentered p-1">
+            <div class="column is-5 is-vcentered p-1 hidden">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
                   <label class="label ">Angle (°): </label>
@@ -93,7 +108,7 @@
           </div>
 
           <div class="columns is-centered">
-            <div class="column is-5 is-vcentered p-1">
+            <div class="column is-10 is-vcentered p-1">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
                   <label class="label ">F → </label>
@@ -107,7 +122,10 @@
                 </div>
               </div>
             </div>
-            <div class="column is-5 is-vcentered p-1">
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column is-5 is-vcentered p-1 is-10">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
                   <label class="label ">X → </label>
@@ -124,7 +142,7 @@
           </div>
 
           <div class="columns is-centered">
-            <div class="column is-5 is-vcentered p-1">
+            <div class="column is-5 is-vcentered p-1 is-10">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
                   <label class="label ">+ → </label>
@@ -138,7 +156,10 @@
                 </div>
               </div>
             </div>
-            <div class="column is-5 is-vcentered p-1">
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column is-5 is-vcentered p-1 is-10">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
                   <label class="label ">- → </label>
@@ -161,7 +182,7 @@
               </span>
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -172,43 +193,75 @@
             </div>
           </div>
           
+          <nav class="level columns is-centered  is-mobile">
+  
+
+ 
+          </nav>
+
+
           <div class="columns is-centered is-mobile">
-            <button id="shrinkBtn" class="button is-danger m-3">
-              <span class="icon">
-                <i data-feather="chevrons-down"></i>
-              </span>
-            </button>
-            <button id="growBtn" class="button is-danger m-3">
-              <span class="icon">
-                <i data-feather="chevrons-up"></i>
-              </span>
-            </button>
+            <div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Depth</p>
+                  <p class="title" id="depthContainer"></p>
+                </div>
+              </div>
+              <button id="shrinkBtn" class="button is-danger m-3">
+                <span class="icon">
+                  <i data-feather="chevrons-down"></i>
+                </span>
+              </button>
+              <button id="growBtn" class="button is-danger m-3">
+                <span class="icon">
+                  <i data-feather="chevrons-up"></i>
+                </span>
+              </button>
+            </div>
 
 
-            <button id="shrinkAngle" class="button is-warning m-3" @click="angle-=1">
-              <span class="icon">
-                <i data-feather="corner-up-left"></i>
-              </span>
-            </button>
+            <div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Angle</p>
+                  <p class="title"> <span id="angleInfo" x-text="angle"></span>°</p>
+                </div>
+              </div>
+              <button id="shrinkAngle" class="button is-warning m-3" @click="angle-=Number(1)">
+                <span class="icon">
+                  <i data-feather="corner-up-left"></i>
+                </span>
+              </button>
+  
+              <button id="growAngle" class="button is-warning m-3" @click="angle+=Number(1)">
+                <span class="icon">
+                  <i data-feather="corner-up-right"></i>
+                </span>
+              </button>
+            </div>
+     
 
-            <button id="growAngle" class="button is-warning m-3" @click="angle+=1">
-              <span class="icon">
-                <i data-feather="corner-up-right"></i>
-              </span>
-            </button>
+            <div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Scale</p>
+                  <p class="title"><span id="zoomContainer">0.75</span></p>
+                </div>
+              </div>
+              <button id="zoomOut" class="button is-success m-3">
+                <span class="icon">
+                  <i data-feather="minus"></i>
+                </span>
+              </button>
+  
+              <button id="zoomIn" class="button is-success m-3">
+                <span class="icon">
+                  <i data-feather="plus"></i>
+                </span>
+              </button>
+            </div>
 
-
-            <button id="zoomOut" class="button is-success m-3">
-              <span class="icon">
-                <i data-feather="minus"></i>
-              </span>
-            </button>
-
-            <button id="zoomIn" class="button is-success m-3">
-              <span class="icon">
-                <i data-feather="plus"></i>
-              </span>
-            </button>
           </div>
 
           <div class="columns is-centered is-mobile">
