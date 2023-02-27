@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fractal Playground</title>
     <link rel="stylesheet" href="css/main.css">
-    <script defer src="/node_modules/alpinejs/dist/cdn.min.js"></script>
-    <script src="/node_modules/feather-icons/dist/feather.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
   </head>
   <body id="body" class="is-family-code"  x-data="{'axiom': 'F', 'ruleF': 'FF+[+F-F-F]-[-F+F+F]', ruleX:'X', rulePlus: '+', ruleMinus: '-', scale: 60, angle: 25, opacity: 50 }">
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -211,7 +211,7 @@
             </button>
           </div>
 
-          <div class="columns is-centered">
+          <div class="columns is-centered is-mobile">
             <button id="infoBtn" class="button is-white m-3">
               <span class="icon">
                 <i data-feather="info"></i>
