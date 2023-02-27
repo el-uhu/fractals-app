@@ -10309,6 +10309,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: hsl(271, 100%, 71%);
 }
 
+.is-grey-light {
+  background-color: hsl(0, 0%, 86%);
+}
+
 .slider {
   width: 15px;
   height: 75px;

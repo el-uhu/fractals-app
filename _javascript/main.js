@@ -5,7 +5,7 @@ var img;
 var axiom;
 var sentences;              // array to hold sentences
 var level = 0;              // level of sentences structure to be drawn
-var totalDepth = 5;         // max level of recursion
+var depth;       // max level of recursion
 var offset = {"x" : 0, "y": 0};
 var canvasSize = 760;  
 var opacity = 0.5;
@@ -103,7 +103,8 @@ function generateSentences() {
 function generate(level) {
   len = length * scale ** (level+1);
   turtle(level);
-  select("#depthContainer").html(level + "/" + sentences.length)
+  depth = sentences.length - 1;
+  select("#depthContainer").html(level + "/" + depth)
   makeCanvasDownloadable();
 }
 
@@ -171,7 +172,7 @@ function preload() {
 //------------------------------------------------------------------
 // move to the next/previous sentence
 function nextLevel() {
-  if (level < sentences.length) {
+  if (level < sentences.length-1) {
     level +=1;
     generate(level);
   }
