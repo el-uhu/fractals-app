@@ -193,15 +193,46 @@
             </div>
           </div>
           
-          <nav class="level columns is-centered  is-mobile">
-  
 
- 
-          </nav>
+          <div class="columns is-centered is-mobile is-vcentered">
+
+            <div class="has-text-centered mr-5"">
+              <div>
+                <button id="moveUp" class="button is-info nav-button">
+                  <span class="icon">
+                    <i data-feather="chevron-up"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="">
+                <button id="moveLeft" class="button is-info nav-button mr-5">
+                  <span class="icon">
+                    <i data-feather="chevron-left"></i>
+                  </span>
+                </button>
+                <button id="moveRight" class="button is-info nav-button">
+                  <span class="icon">
+                    <i data-feather="chevron-right"></i>
+                  </span>
+                </button>
+              </div>
+              <div>
+                <button id="moveDown" class="button is-info nav-button">
+                  <span class="icon">
+                    <i data-feather="chevron-down"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
 
 
-          <div class="columns is-centered is-mobile">
-            <div>
+
+            <div class="m-2">
+              <button id="growBtn" class="button is-danger m-3">
+                <span class="icon">
+                  <i data-feather="plus"></i>
+                </span>
+              </button>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Depth</p>
@@ -210,18 +241,18 @@
               </div>
               <button id="shrinkBtn" class="button is-danger m-3">
                 <span class="icon">
-                  <i data-feather="chevrons-down"></i>
-                </span>
-              </button>
-              <button id="growBtn" class="button is-danger m-3">
-                <span class="icon">
-                  <i data-feather="chevrons-up"></i>
+                  <i data-feather="minus"></i>
                 </span>
               </button>
             </div>
 
 
-            <div>
+            <div class="m-2">
+              <button id="growAngle" class="button is-warning m-3" @click="angle+=Number(1)">
+                <span class="icon">
+                  <i data-feather="plus"></i>
+                </span>
+              </button>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Angle</p>
@@ -230,19 +261,18 @@
               </div>
               <button id="shrinkAngle" class="button is-warning m-3" @click="angle-=Number(1)">
                 <span class="icon">
-                  <i data-feather="corner-up-left"></i>
-                </span>
-              </button>
-  
-              <button id="growAngle" class="button is-warning m-3" @click="angle+=Number(1)">
-                <span class="icon">
-                  <i data-feather="corner-up-right"></i>
+                  <i data-feather="minus"></i>
                 </span>
               </button>
             </div>
      
 
-            <div>
+            <div class="m-2">
+              <button id="zoomIn" class="button is-success m-3">
+                <span class="icon">
+                  <i data-feather="plus"></i>
+                </span>
+              </button>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Scale</p>
@@ -252,12 +282,6 @@
               <button id="zoomOut" class="button is-success m-3">
                 <span class="icon">
                   <i data-feather="minus"></i>
-                </span>
-              </button>
-  
-              <button id="zoomIn" class="button is-success m-3">
-                <span class="icon">
-                  <i data-feather="plus"></i>
                 </span>
               </button>
             </div>

@@ -57,6 +57,11 @@ function setup() {
   select("#zoomIn").mouseClicked(zoomIn);           //zoom in
   select("#submitButton").mouseClicked(reload);       //submit settings and redraw
 
+  select("#moveUp").mouseClicked(moveUp);
+  select("#moveDown").mouseClicked(moveDown);
+  select("#moveRight").mouseClicked(moveRight);
+  select("#moveLeft").mouseClicked(moveLeft);
+
   let fileInput = select("#fileInput");
 
 }
