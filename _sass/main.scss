@@ -86,3 +86,12 @@ $primary-invert: $pink-invert;
         width: 100%;
 
     }
+
+    .box {
+        border-radius: 0px !important;
+        height: 100%
+    }
+
+    .hidden {
+        display: none;
+    }
