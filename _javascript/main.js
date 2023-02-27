@@ -34,9 +34,6 @@ function initiate() {
           nextSentence += rules[j][current];
         }
       }
-      if (!found) {
-        nextSentence += current;
-      }
     sentences.push(nextSentence);
   }
   generate(level);
