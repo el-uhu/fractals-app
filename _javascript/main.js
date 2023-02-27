@@ -1,18 +1,4 @@
 
-
-// 
-// Draw and L-System
-// 
-// based on:
-// Daniel Shiffman
-// Code for: https://youtu.be/E1B4UoSQMFw
-
-// variables: A B
-// axiom: A
-// rules: (A → AB), (B → A)
-
-
-
 var angle;
 var scale;
 var img;
@@ -83,6 +69,12 @@ function turtle(level) {
       }
       translate(0, -len);
     } else if (current == "X") {
+      tint(255, 255*opacity);
+      if (select("#selectImage").elt.checked) {
+        image(img, 0, 0, len, len);
+      } else {
+        line(0, 0, 0, -len);
+      }
       translate(0, -len);
     } else if (current == "+") {
       rotate(angle);
