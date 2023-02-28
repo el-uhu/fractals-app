@@ -76,15 +76,15 @@ In order to turn the Kock curve into a snowflake, we need to change the Axiom.
 - The drawing can be download as `image.png` by pressing the download button.
 
 ### Keyboard Shortcuts
- - <kbd>w</kbd>, <kbd>a</kbd>, <kbd>s</kbd>, <kbd>d</kbd> - for moving the origin up, left, down or right, respectively
- - <kbd>y</kbd> / <kbd>x</kbd> - for changing the depth (iteration step)
- - <kbd>c</kbd> / <kbd>v</kbd> - for changing the angle
- - <kbd>b</kbd> / <kbd>n</kbd> - for changing the zoom/scaling
+ - <kbd class="kbc-button-xs">w</kbd>, <kbd class="kbc-button-xs">a</kbd>, <kbd class="kbc-button-xs">s</kbd>, <kbd class="kbc-button-xs">d</kbd> - for moving the origin up, left, down or right, respectively
+ - <kbd class="kbc-button-xs">y</kbd> / <kbd class="kbc-button-xs">x</kbd> - for changing the depth (iteration step)
+ - <kbd class="kbc-button-xs">c</kbd> / <kbd class="kbc-button-xs">v</kbd> - for changing the angle
+ - <kbd class="kbc-button-xs">b</kbd> / <kbd class="kbc-button-xs">n</kbd> - for changing the zoom/scaling
 
 ### Settings Page
 - Only the following symbols can be used for specifying rules:
-	- **`F`** *"move forward and draw"*,
-	- **`X`** *"move forward and draw"* or *just move forward*
+	- **`F`** *"move forward and/or draw"*
+	- **`X`** *"move forward and/or draw"*
 	- **`+`** "*turn left by a certain angle*"
 	- **`-`** *"turn right by a certain angle"*
 	- **`[`** "*enter a branch*"

@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/keyboard-css@1.2.4/dist/css/main.min.css" /> 
   </head>
   <body 
     id="body" 
@@ -57,7 +58,7 @@
                 </span> Fractals Playground
               </p>
               <p class="subtitle has-text-white ">
-                An interactive tool for exploring L-systems
+                Interactively exploring L-systems
               </p>
             </div>
           </section>
@@ -281,7 +282,23 @@
               </span>
             </button>
           </div>
-        </div> -->
+
+          <div class="columns is centered">
+            <div class="column content">
+              <h4> Keyboard Shortcuts</h4>
+              <ul>
+                <li><kbd class="kbc-button-xs">w</kbd>, <kbd class="kbc-button-xs">a</kbd>, <kbd class="kbc-button-xs">s</kbd>, <kbd class="kbc-button-xs">d</kbd> - for moving the origin up, left, down or right, respectively</li>
+                <li><kbd class="kbc-button-xs">y</kbd> / <kbd class="kbc-button-xs">x</kbd> - for changing the depth (iteration step)</li>
+                <li><kbd class="kbc-button-xs">c</kbd> / <kbd class="kbc-button-xs">v</kbd> - for changing the angle</li>
+                <li><kbd class="kbc-button-xs">b</kbd> / <kbd class="kbc-button-xs">n</kbd> - for changing the zoom/scaling</li>
+                </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+
       </div>
     </div>
 
