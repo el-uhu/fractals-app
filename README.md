@@ -1,6 +1,6 @@
 # Fractals Playground
 
-This website allows you to explore the breautiful world of fractals. We can find fractals everywhere in nature. Popular examples are the *[Romanseco broccoli](https://en.wikipedia.org/wiki/Romanesco_broccoli?wprov=sfti1)* and many types of ferns. In fractals, the shape of the smaller parts looks like like the shape of the whole. We can say that they are *self-similar*.
+This website allows you to explore the beautiful world of fractals. We can find fractals everywhere in nature. Popular examples are the *[Romanseco broccoli](https://en.wikipedia.org/wiki/Romanesco_broccoli?wprov=sfti1)* and many types of ferns. In fractals, the shape of the smaller parts looks like like the shape of the whole. We can say that they are *self-similar*.
 
 ### Properties of fractals
 Fractals can pack an incredibly large surface areas into a small volume. This can be important for living things, as large surface areas allow them to better exchange molecules with their environment, such as oxygen, carbon dioxide, or food molecules.
