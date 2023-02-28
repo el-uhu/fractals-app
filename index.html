@@ -9,6 +9,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   </head>
   <body 
     id="body" 
@@ -37,7 +38,63 @@
       </div>
     </nav>
 
-    <div id="modal-js-example" class="modal">
+        
+    <div id="modal-info" class="modal is-active">
+      <div class="modal-background has-background-white"></div>
+    
+      <div class="modal-content">
+          <button id="closeInfoButton" class="button is-success is-large m-3 closemodal is-fixed">
+            <span class="icon">
+              <i data-feather="codesandbox"></i>
+            </span>
+          </button>
+
+          <section class="hero has-bg-img">
+            <div class="hero-body">
+              <p class="title has-text-white">
+                <span class="icon">
+                  <i data-feather="codesandbox"></i>
+                </span> Fractals Playground
+              </p>
+              <p class="subtitle has-text-white ">
+                An interactive tool for exploring L-systems
+              </p>
+            </div>
+          </section>
+
+          <section class="m-6" id="infoText">
+            <div class="columns is-centered">
+              <div id="infoContent" class="column is-6 has-text-justified content">
+
+              </div>
+            </div>
+          </section>
+
+          <footer class="footer has-text-centered">
+            <div class="container">
+              <div class="columns">
+                <div class="column is-8-desktop is-offset-2-desktop">
+                  <p>Created by Lukas Hutter, 2023</p>
+                  <p>
+                    <small>
+                      using <a href="http://bulma.io">Bulma</a>, <a href="https://https://p5js.org/">P5.js</a> and <a href="https://feathericons.com/">Feather Icons</a>
+                    </small>
+                  </p>
+                  <p>
+                    <small>
+                      Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </footer>
+      
+      </div>
+    </div>
+
+
+    <div id="modal-settings" class="modal">
       <div class="modal-background"></div>
     
       <div class="modal-content">
@@ -75,7 +132,7 @@
             </div>
           </div>
 
-          <div class="columns is-mobile is-centered">
+          <div class="columns is-mobile is-centered  pb-4">
             <div class="column is-vcentered p-1 is-10">
               
               <div class="field is-horizontal">
@@ -108,6 +165,27 @@
           </div>
 
           <div class="columns is-centered">
+            <div class="column is-5 is-vcentered p-1 is-10">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1">
+                  <label class="label ">F :</label>
+                </div>
+                <div class="field-body is-vcentered pt-2">
+                  <label class="checkbox mr-6">
+                    <input id="fMove" type="checkbox" checked>
+                      moves forward
+                  </label>
+
+                  <label class="checkbox">
+                    <input id="fDraw" type="checkbox" checked>
+                      draws
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered pb-4">
             <div class="column is-10 is-vcentered p-1">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
@@ -125,6 +203,27 @@
           </div>
 
           <div class="columns is-centered">
+            <div class="column is-5 is-vcentered p-1 is-10">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1">
+                  <label class="label ">X : </label>
+                </div>
+                <div class="field-body is-vcentered pt-2">
+                  <label class="checkbox mr-6">
+                    <input id="xMove" type="checkbox" checked>
+                      moves forward
+                  </label>
+
+                  <label class="checkbox">
+                    <input id="xDraw" type="checkbox" checked>
+                      draws
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered  pb-4">
             <div class="column is-5 is-vcentered p-1 is-10">
               <div class="field is-horizontal">
                 <div class="field-label is-normal mr-1 pt-2">
@@ -176,7 +275,7 @@
           </div>
 
           <div class="columns is-mobile is-centered">
-            <button id="submitButton" class="button is-purple is-large m-3 closemodal">
+            <button id="submitButton" class="button is-purple is-large m-3 closemodal no-border">
               <span class="icon">
                 <i data-feather="check"></i>
               </span>
@@ -289,13 +388,13 @@
           </div>
 
           <div class="columns is-centered is-mobile">
-            <button id="infoBtn" class="button is-white m-3">
+            <button id="infoBtn" class="button is-white m-3 js-modal-trigger" data-target="modal-info">
               <span class="icon">
                 <i data-feather="info"></i>
               </span>
             </button>
   
-            <button id="settingsBtn" class="button is-white m-3 js-modal-trigger" data-target="modal-js-example">
+            <button id="settingsBtn" class="button is-white m-3 js-modal-trigger" data-target="modal-settings">
               <span class="icon">
                 <i data-feather="sliders"></i>
               </span>
@@ -309,30 +408,21 @@
       </div>
     </section>
 
-    <footer class="footer has-text-centered">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-8-desktop is-offset-2-desktop">
-            <p>Created by Lukas Hutter, 2023</p>
-            <p>
-              <small>
-                using <a href="http://bulma.io">Bulma</a>, <a href="https://https://p5js.org/">P5.js</a> and <a href="https://feathericons.com/">Feather Icons</a>
-              </small>
-            </p>
-            <p>
-              <small>
-                Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
 
     <script type="text/javascript" src="lib/main.js"></script>
 
     <script>
       feather.replace()
+    </script>
+
+    <script>
+      fetch("/README.md")      // The path to the raw Markdown file
+        .then(response => response.blob())  // Unwrap to a blob...
+        .then(blob => blob.text())          // ...then to raw text...
+        .then(markdown => {                 // ...then pass the raw text into marked.parse
+          document.getElementById("infoContent").innerHTML = marked.parse(markdown);
+          document.getElementById("fractals-playground").remove();
+        });
     </script>
 
   </body>

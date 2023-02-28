@@ -10368,6 +10368,11 @@ input {
   width: 100%;
 }
 
+.has-bg-img {
+  background: url("/assets/ferns.jpeg") center center;
+  background-size: cover;
+}
+
 .box {
   border-radius: 0px !important;
   height: 100%;
@@ -10375,4 +10380,14 @@ input {
 
 .hidden {
   display: none;
+}
+
+.is-fixed {
+  position: fixed;
+  top: 90%;
+  left: 80%;
+}
+
+.no-border {
+  border-width: 0px !important;
 }

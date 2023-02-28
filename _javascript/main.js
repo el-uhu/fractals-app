@@ -12,6 +12,10 @@ var opacity = 0.5;
 var length;
 var dataURL;
 var len;
+var fDraw;
+var fMove;
+var xDraw;
+var xMove;
 
 var rules = [];
 rules[0] = {
@@ -71,7 +75,11 @@ function setup() {
 //------------------------------------------------------------------
 function reload() {
   axiom = select("#axiomInput").value();
+  fMove = select("#fMove").checked();
+  fDraw = select("#fDraw").checked();
   rules[0]["F"] = select("#ruleFInput").value();
+  xMove = select("#xMove").checked();
+  xDraw = select("#xDraw").checked();
   rules[0]["X"] = select("#ruleXInput").value();
   rules[0]["+"] = select("#rulePlusInput").value();
   rules[0]["-"] = select("#ruleMinusInput").value();
@@ -123,9 +131,6 @@ function createMark() {
   }
 }
 
-//------------------------------------------------------------------
-// TURTLE GRAPHICS DRAW FUNCTION
-//------------------------------------------------------------------
 function turtle(level) {
   background(255);
   resetMatrix();
@@ -133,25 +138,27 @@ function turtle(level) {
   stroke(0, 100);
   for (var i = 0; i < sentences[level].length; i++) {
     var current = sentences[level].charAt(i);
-    if (current == "F") {
-      createMark();
-      translate(0, -len);
-    } else if (current == "X") {
-      tint(255, 255*opacity);
-      if (select("#selectImage").elt.checked) {
-        image(img, 0, 0, len, len);
-      } else {
-        line(0, 0, 0, -len);
-      }
-      translate(0, -len);
-    } else if (current == "+") {
-      rotate(angle);
-    } else if (current == "-") {
-      rotate(-angle)
-    } else if (current == "[") {
-      push();
-    } else if (current == "]") {
-      pop();
+    switch (current) {
+      case "F":
+        if (fDraw) {createMark();};
+        if (fMove) {translate(0, -len);};
+        break;
+      case "X":
+        if (xDraw) {createMark();};
+        if (xMove) {translate(0, -len);};
+        break;
+      case "+":
+        rotate(angle);
+        break;
+      case "-":
+        rotate(-angle);
+        break;
+      case "[":
+        push();
+        break;
+      case "]":
+        pop();
+        break;
     }
   }
 }
