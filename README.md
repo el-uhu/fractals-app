@@ -5,9 +5,6 @@ This website allows you to explore the beautiful world of fractals. We can find 
 ### Properties of fractals
 Fractals can pack an incredibly large surface areas into a small volume. This can be important for living things, as large surface areas allow them to better exchange molecules with their environment, such as oxygen, carbon dioxide, or food molecules.
 
-The animation below shows us what this can look like in 2D...
-> Insert animation of folding Koch curve
-
 ## Making Fractals
 Although the shape of fractals can look incredibly complicated, we can make them using a few simple tricks. Instead of writing instructions for how to make the whole shape, we try to come up with simple rules that describe how the structure grows in a stepwise manner. Figuring out the rules is the most important step. Afterwards, all we have to do teach a computer how to understand them as drawing instructions.
 
@@ -36,13 +33,13 @@ These are applied to each symbol to move from one step to the next and generate 
 
 Let's try to implement the example of the *Koch snowflake*.
 
-![Koch Snowflake](/assets/koch-snowflake.png)
+![Koch Snowflake](https://el-uhu.github.io/fractals-app/assets/koch-snowflake.png)
 
 First, we need to figure out what our alphabet is. There are no branches in the snowflake, so we will not need any symbols for branching (**`[`** and **`]`**). We need a symbol for drawing a line (**`F`**) and symbols for turning left and right (+ and -).
 
 Let's start by drawing a single line (our Axiom is **`F`** ). To draw a Koch curve, each line is turned into four lines with a kink in the middle...
 
-![Koch Rule](/assets/koch-rule.png)
+![Koch Rule](https://el-uhu.github.io/fractals-app/assets/koch-rule.png)
 
 The corresponding rule set is **`F+F--F+F`** .
 
