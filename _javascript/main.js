@@ -16,6 +16,7 @@ var fDraw;
 var fMove;
 var xDraw;
 var xMove;
+var input;
 
 var rules = [];
 rules[0] = {
@@ -39,6 +40,11 @@ function setup() {
   canvas.parent('sketch-holder'); // Move the canvas so it’s inside our <div id="sketch-holder">.
   pixelDensity(3);  // increase pixel density to get decent download quality
   background(255);
+
+  input = createFileInput(handleFile);
+  input.parent('input-holder');
+  input.addClass("file-input");
+
 
   // SET KEY VARIABLES
   // -----------------
@@ -110,6 +116,15 @@ function generateSentences() {
   }
 }
 
+function handleFile(file) {
+  print(`File selected: ${file.name}`);
+  img = loadImage(
+    file.data,
+    () => print('Image Loaded Successfully.'),
+    () => print('Image Failed to Load.'),
+  );
+}
+
 //------------------------------------------------------------------
 // MAIN DRAWING FUNCTION, calls turtle
 //------------------------------------------------------------------
@@ -125,7 +140,7 @@ function generate(level) {
 function createMark() {
   tint(255, 255*opacity);
   if (select("#selectImage").elt.checked) {
-    image(img, 0, 0, len, len);
+    image(img, 0, -len, len/2, len);
   } else {
     line(0, 0, 0, -len);
   }
@@ -177,6 +192,8 @@ function makeCanvasDownloadable() {
 //------------------------------------------------------------------
 function preload() {
   img = loadImage("stroke.png");
+  // img = pctx.getImageData(0,0,50,100);
+  
 }
 
 //------------------------------------------------------------------

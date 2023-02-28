@@ -102,38 +102,7 @@
         <div class="box">
           <p class="title is-4">Settings</p>
 
-          <div class="columns is-mobile is-centered">
-            <div class="column is-4 is-vcentered p-1 hidden">
-              <div class="control">
-                <label class="radio">
-                  <input type="radio" name="foobar" id="selectLine" checked>
-                  Draw using a regular line
-                </label>
-                <label class="radio">
-                  <input type="radio" name="foobar" id="selectImage">
-                  Draw using a photo
-                </label>
-              </div>
-            </div>
-
-            <div class="file column is-3 is-vcentered p-1 hidden">
-              <label class="file-label">
-                <input class="file-input" type="file" name="resume" id="fileInput">
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <span class="icon">
-                      <i data-feather="upload-cloud"></i>
-                    </span>
-                  </span>
-                  <span class="file-label">
-                    Choose a file…
-                  </span>
-                </span>
-              </label>
-            </div>
-          </div>
-
-          <div class="columns is-mobile is-centered  pb-4">
+          <div class="columns is-centered  pb-4">
             <div class="column is-vcentered p-1 is-10">
               
               <div class="field is-horizontal">
@@ -144,20 +113,6 @@
                   <div class="field">
                     <div class="control">
                       <input id="axiomInput" class="input p-0 pl-2" type="text" x-model="axiom" placeholder="describe the starting shape here">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="column is-5 is-vcentered p-1 hidden">
-              <div class="field is-horizontal">
-                <div class="field-label is-normal mr-1 pt-2">
-                  <label class="label ">Angle (°): </label>
-                </div>
-                <div class="field-body is-small">
-                  <div class="field">
-                    <div class="control">
-                      <input id="angleInput" class="input p-0 pl-2" type="number" x-model="angle" placeholder="What is the angle for turning left (-) or right (+)?">
                     </div>
                   </div>
                 </div>
@@ -275,8 +230,50 @@
             </div>
           </div>
 
+          <div class="columns is-mobile is-centered  pb-4">
+            <div class="column is-5 is-vcentered p-1 hidden">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal mr-1 pt-2">
+                  <label class="label ">Angle (°): </label>
+                </div>
+                <div class="field-body is-small">
+                  <div class="field">
+                    <div class="control">
+                      <input id="angleInput" class="input p-0 pl-2" type="number" x-model="angle" placeholder="What is the angle for turning left (-) or right (+)?">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column is-10 is-vcentered pl-6">
+              <div class="control has-text-left">
+                <label class="radio">
+                  <input type="radio" name="foobar" id="selectLine" checked>
+                  Draw using a regular line
+                </label>
+                <label class="radio">
+                  <input type="radio" name="foobar" id="selectImage">
+                  Draw using a photo
+                </label>
+              </div>
+            </div>
+          </div>
+
           <div class="columns is-mobile is-centered">
-            <button id="submitButton" class="button is-purple is-large m-3 closemodal no-border">
+            <div class="file">
+              <label class="file-label" id="input-holder">
+                <input class="file-input" type="file" name="resume">
+                <button class="button is-purple is-large m-3 no-border has-text-white">
+                  <span class="icon">
+                    <i data-feather="upload-cloud"></i>
+                  </span>
+                </button>
+              </label>
+            </div>
+            <button id="submitButton" class="button is-danger is-large m-3 closemodal no-border">
               <span class="icon">
                 <i data-feather="check"></i>
               </span>
@@ -284,7 +281,7 @@
           </div>
 
           <div class="columns is centered">
-            <div class="column content">
+            <div class="column content is-10">
               <h4> Keyboard Shortcuts</h4>
               <ul>
                 <li><kbd class="kbc-button-xs">w</kbd>, <kbd class="kbc-button-xs">a</kbd>, <kbd class="kbc-button-xs">s</kbd>, <kbd class="kbc-button-xs">d</kbd> - for moving the origin up, left, down or right, respectively</li>
