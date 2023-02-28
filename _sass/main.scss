@@ -88,11 +88,11 @@ $primary-invert: $pink-invert;
 
     }
 
-    .has-bg-img { background: url('https://el-uhu.github.io/fractals-app/assets/ferns.jpeg')center center; background-size:cover; }
+    // .has-bg-img { background: url('https://el-uhu.github.io/fractals-app/assets/ferns.jpeg')center center; background-size:cover; }
 
     .box {
         border-radius: 0px !important;
-        height: 100%
+        height: inherit;
     }
 
     .hidden {
@@ -101,8 +101,8 @@ $primary-invert: $pink-invert;
 
     .is-fixed {
         position:fixed;
-        top: 90%;
-        left: 80%;
+        top: 85%;
+        left: 75%;
     }
 
     .no-border {
