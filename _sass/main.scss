@@ -108,3 +108,7 @@ $primary-invert: $pink-invert;
     .no-border {
         border-width: 0px !important;
     }
+
+    .has-text-justified > .title, .subtitle {
+        text-align: left !important;
+    }

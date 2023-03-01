@@ -9,7 +9,7 @@ Fractals can pack an incredibly large surface areas into a small volume. This ca
 Although the shape of fractals can look incredibly complicated, we can make them using a few simple tricks. Instead of writing instructions for how to make the whole shape, we try to come up with simple rules that describe how the structure grows in a stepwise manner. Figuring out the rules is the most important step. Afterwards, all we have to do teach a computer how to understand them as drawing instructions.
 
 ## L -  Systems
-This is where **Lindenmeyer-Systems** or (L-Systems) come in. They are a way to do just that! Originally, they were invented by the Hungarian biologist **Aristide Lindenmeyer**, who used them to describe how strands of algae grow.
+This is where **Lindenmayer-Systems** or (L-Systems) come in. They are a way to do just that! Originally, they were invented by the Hungarian biologist **Aristide Lindenmayer**, who used them to describe how strands of algae grow.
 
 ##### Parts
 The idea behind L-Systems is to take a drawing instructions and repeatedly apply the same rules to them, that change each instruction into another set of instructions at each step of the process. (This step-wise approach is called *iterative generation*).
@@ -35,6 +35,8 @@ Let's try to implement the example of the *Koch snowflake*.
 
 ![Koch Snowflake](https://el-uhu.github.io/fractals-app/assets/koch-snowflake.png)
 
+To make things easier, we'll start by constructing a single side of the snowflake, a so-called *Koch curve*, and then make the entire curve.
+
 First, we need to figure out what our alphabet is. There are no branches in the snowflake, so we will not need any symbols for branching (**`[`** and **`]`**). We need a symbol for drawing a line (**`F`**) and symbols for turning left and right (+ and -).
 
 Let's start by drawing a single line (our Axiom is **`F`** ). To draw a Koch curve, each line is turned into four lines with a kink in the middle...
@@ -47,18 +49,19 @@ The corresponding rule set is **`F+F--F+F`** .
 2. Grow the structure by pressing the red button labelled plus.
 3. Set the angle to 60°.
 
-##### Turning the Koch Curve into A Koch Snowflake
+##### Turning the Koch Curve Into A Koch Snowflake
 In order to turn the Kock curve into a snowflake, we need to change the Axiom.
 
 1. Change the Axiom to **`F++F++F`**
 2. Explore
 
-## Suggested L-Systems to Explore
+## What next?
+There are a couple of classic shapes that can be generated with using L-Systems, such as:
 - Dragon Curve
-- Koch Snowflake
 - Sierpinski Triangle
 - Binary Tree
 - Barnsley Fern
+... head over to the [examples section of the Wikipedia site on L-Systems](https://en.wikipedia.org/wiki/L-system#Examples_of_L-systems) for some starting rules.
 
 ---
 
